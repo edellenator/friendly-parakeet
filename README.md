@@ -1,5 +1,7 @@
 # Password Generator
 
+https://edellenator.github.io/friendly-parakeet/
+
 A password generator built using basic javascript.
 
 Activated by clicking on an HTML button element and using simple window prompts and user input to determine criteria for password generation  
