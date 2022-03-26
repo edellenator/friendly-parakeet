@@ -33,7 +33,7 @@ var textSelection = function (text) {
   console.log(text);
 
   //Select if upper case string will be used
-  var upperSelect = confirm("Should the password contain lower case letters?");
+  var upperSelect = confirm("Should the password contain upper case letters?");
   if (upperSelect) {
     text += textType.upperCase;
   };
