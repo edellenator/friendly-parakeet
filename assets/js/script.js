@@ -1,4 +1,4 @@
-// Assignment code here
+// available text types
 var textType = {
   lowerCase: "abcdefghijklmnopqrstuvwxyz",
   upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -8,10 +8,11 @@ var textType = {
 
 
 
-// prompt to get characterLength
+// select between 8 and 128 characters for password length
 var lengthSelect = function () {
   var passLength = 0
   passLength = prompt ("How many characters should the password be? Choose between 8 and 128 characters");
+  // if prompt is less than 8, more than 128, or nothing is entered, then return to prompt
   if (passLength < 8 || passLength > 128 || !passLength) {
     alert ("You must choose between 8 and 128 characters");
     return lengthSelect();
@@ -56,14 +57,11 @@ var textSelection = function (text) {
     alert("You must select at least one character type")
     return textSelection();
   }
-
-
-
   return text;
 }
 
 
-
+//generate password from previous prompts
 var generatePassword = function () {
   var passLength = lengthSelect ();
   console.log(passLength);
@@ -72,15 +70,10 @@ var generatePassword = function () {
   var randomText = "";
   var characterLength = possibleText.length;
 
-  console.log (characterLength);
-
+ // loop through selected characters at random as many times as selected in password length
   for (var i = 0; i < passLength; i++) {
     randomText += possibleText.charAt(Math.floor(Math.random() * characterLength));
   };
-
-    
-  
-  console.log (randomText)
   return randomText;
 };
 
@@ -102,15 +95,3 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-// function makeid(length) {
-//   var result           = '';
-//   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//   var charactersLength = characters.length;
-//   for ( var i = 0; i < length; i++ ) {
-//     result += characters.charAt(Math.floor(Math.random() * 
-// charactersLength));
-//  }
-//  return result;
-// };
-
-// console.log(makeid(5));
