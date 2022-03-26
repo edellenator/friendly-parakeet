@@ -9,23 +9,26 @@ var textType = {
 
 
 // prompt to get characterLength
-var passwordLength = function () {
-  var length = 8;
-  length = prompt ("How many characters should the password be? Choose between 8 and 128 characters");
-  console.log(length);
+var lengthSelect = function () {
+  var passLength = 0
+  passLength = prompt ("How many characters should the password be? Choose between 8 and 128 characters");
+  if (passLength < 8 || passLength > 128 || !passLength) {
+    alert ("You must choose between 8 and 128 characters");
+    return lengthSelect();
+  }
+  return passLength;
 };
 
-var textLength = parseInt(passwordLength());
+
 
 //concatenate character strings based on confirmations
-function textSelection(text) {
+var textSelection = function (text) {
 
   //Select if lower case string will be used
   var lowerSelect = confirm("Should the password contain lower case letters?");
   if (lowerSelect) {
     text += textType.lowerCase;
   };
-  console.log(lowerSelect);
   console.log(text);
 
   //Select if upper case string will be used
@@ -62,21 +65,24 @@ function textSelection(text) {
 
 
 var generatePassword = function () {
+  var passLength = lengthSelect ();
+  console.log(passLength);
+  var possibleText = textSelection ();
+  console.log (possibleText);
   var randomText = "";
-  var possibleText = textSelection();
+  var characterLength = possibleText.length;
 
-  console.log(possibleText);
+  console.log (characterLength);
 
-  for (var i = 0; 1 < textLength; i++) {
-    randomText += possibleText.charAt(Math.floor(Math.random() * possibleText.length));
+  for (var i = 0; i < passLength; i++) {
+    randomText += possibleText.charAt(Math.floor(Math.random() * characterLength));
   };
 
-    console.log(randomText);
+    
+  
+  console.log (randomText)
   return randomText;
-
 };
-
-generatePassword();
 
 
 // Get references to the #generate element
@@ -95,16 +101,16 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-// function makeid() {
-//   var text = "";
-//   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-//   for (var i = 0; i < 5; i++) {
-//     text += possible.charAt(Math.floor(Math.random() * possible.length));
-//   }
+// function makeid(length) {
+//   var result           = '';
+//   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//   var charactersLength = characters.length;
+//   for ( var i = 0; i < length; i++ ) {
+//     result += characters.charAt(Math.floor(Math.random() * 
+// charactersLength));
+//  }
+//  return result;
+// };
 
-//   return text;
-// }
-
-// console.log(makeid());
-// " !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+// console.log(makeid(5));
